@@ -1,0 +1,21 @@
+{
+    "name": "jsmsoftware/jsmdbseeder",
+    "description": "Seeder for MySQL databases using faker",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Johan Strootman",
+            "email": "jj.strootman@alfa-college.nl"
+        }
+    ],
+    "require": {
+        "fzaninotto/faker": "^1.9",
+        "nesbot/carbon": "^2.48"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
