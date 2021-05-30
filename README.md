@@ -54,4 +54,25 @@ return [
     'username' => 'root',
     'password' => 'root'
 ];
+```  
+  
+# Wijzigingen
+
+## Commandline tool
+Er zijn nu twee PHP-scripts te gebruiken, nl:  
+1. index.php  
+    Levert HTML output op
+2. jsmdbseeder.php  
+    Dit is de commandline versie van de tool. Deze start je in de terminal op de volgende manier:  
+```bash
+    php jsmdbseeder.php
 ```
+
+## Nieuwe functionaliteit
+Nieuwe functionaliteit toegevoegd:  
+1. 'faker:randomChars:length:modifier'  
+    Hier staat de modifier voor uppercase of lowercase  
+    Voorbeeld: 'faker:randomChars:3:uppercase' voor een docenten afkorting
+2. 'faker:gender:length:modifier'  
+    Modifier staat voor uppercase of lowercase. Maar wanneer length gelijk aan 3 is werkt de modifier niet en krijg je Male of Female.
+

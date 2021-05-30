@@ -21,34 +21,13 @@
  */
 
 return [
-    'users:10' => [
-        'name' => 'faker:name',
-        'email' => 'faker:freeEmail',
-        'password' => 'password:welkom',
-        'is_admin' => 'number:0',
-        'created_at' => 'date:timestamp',
-        'updated_at' => 'date:timestamp'
+    'klassen:2' => [
+        'klasnaam' => 'faker:word',
+        'mentor' => 'faker:name'
     ],
-    'threads:20' => [
-        'title' => 'faker:sentence:5',
-        'description' => 'faker:paragraph:4',
-        'user_id' => 'rand:1:10',
-        'created_at' => 'date:timestamp',
-        'updated_at' => 'date:timestamp'
-    ],
-    'topics:50' => [
-        'title' => 'faker:sentence:5',
-        'body' => 'faker:paragraph:10',
-        'user_id' => 'rand:1:10',
-        'thread_id' => 'rand:1:20',
-        'created_at' => 'date:timestamp',
-        'updated_at' => 'date:timestamp'
-    ],
-    'replies:100' => [
-        'body' => 'faker:paragraph:10',
-        'user_id' => 'rand:1:10',
-        'topic_id' => 'rand:1:50',
-        'created_at' => 'date:timestamp',
-        'updated_at' => 'date:timestamp'
+    'docenten:4' => [
+        'naam' => 'faker:name',
+        'afkorting' => 'faker:randomChars:3:uppercase',
+        'geslacht' => 'faker:gender:1:uppercase'
     ]
 ];
