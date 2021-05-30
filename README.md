@@ -62,10 +62,10 @@ return [
 Er zijn nu twee PHP-scripts te gebruiken, nl:  
 1. index.php  
     Levert HTML output op
-2. jsmdbseeder.php  
+2. jsmdbseeder  
     Dit is de commandline versie van de tool. Deze start je in de terminal op de volgende manier:  
 ```bash
-    php jsmdbseeder.php
+    php jsmdbseeder
 ```
 
 ## Nieuwe functionaliteit

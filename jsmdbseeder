@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 @include "./vendor/autoload.php";
@@ -11,14 +12,14 @@ $factory = new App\FactoryProcessor\FactoryProcessor();
 
 $data_tables = [];
 $recnum = 1;
-
+colorLog('JSMDBSeeder Version 1.01', 'l');
 foreach($tables as $table => $columns) {
     
     $table_info = explode(':', $table);
     $table_name = $table_info[0];
     $amount = intval($table_info[1]);
 
-    echo "SEEDING RECORDS FOR TABLE: $table_name".PHP_EOL;
+    colorLog("SEEDING RECORDS FOR TABLE: $table_name", 'i');
     for($i = 0; $i < $amount; $i++) {
         $record = $factory->process($columns);
         $db->insert($table_name, $record);
@@ -26,7 +27,8 @@ foreach($tables as $table => $columns) {
         $recnum++;
         $data_tables[$table_name][] = $record;
     }
-    echo 'End of seeding'.PHP_EOL.PHP_EOL;
+    
+    colorLog('End of seeding', 's');
     $recnum = 1;
 }
 
@@ -49,4 +51,26 @@ function print_record($record)
     }
 
     echo $line . PHP_EOL;
+}
+
+function colorLog($str, $type = 'i'){
+    switch ($type) {
+        case 'e': //error
+            echo "\033[31m$str \033[0m\n";
+        break;
+        case 's': //success
+            echo "\033[32m$str \033[0m\n";
+        break;
+        case 'w': //warning
+            echo "\033[33m$str \033[0m\n";
+        break;  
+        case 'i': //info
+            echo "\033[36m$str \033[0m\n";
+        break;  
+        case 'l':
+            echo "\033[95m$str \033[0m\n";    
+        default:
+        # code...
+        break;
+    }
 }
