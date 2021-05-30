@@ -3,9 +3,45 @@
 
 @include "./vendor/autoload.php";
 
+$seedfile = 'database';
+$connectionfile = 'dbconnection';
 
-$config = include './config/dbconnection.php';
-$tables = include './config/database.php';
+if(count($argv) > 1) {
+    $arguments = $argv;
+    array_shift($arguments);
+    
+    foreach($arguments as $index => $arg) {
+        switch($arg) {
+            case '-h':
+                colorLog('JSMDBSeeder Version 1.01', 'l');
+                colorLog('');
+                colorLog('Usage:');
+                colorLog('     php jsmdbseeder [-s seedfile [-c configfile]]', 'w');
+                colorLog('');
+                colorLog('     [seedfile]       .PHP filename (without extension)');
+                colorLog('                       Default is database for database.php');
+                colorLog('                       Seed files need to be in folder config.');
+                colorLog('     [configfile]     .PHP filename (without extension)');
+                colorLog('                      Database connection configuration.');
+                colorLog('                      Default is dbconnection for dbconnection.php');
+                colorLog('                      Connection files need to be in folder config.');
+                colorLog('');
+                die();
+                break;
+
+            case '-s':
+                $seedfile = $arguments[$index + 1];
+                break;
+
+            case '-c':
+                $connectionfile = $arguments[$index + 1];
+                break;
+        }
+    }
+}
+
+$config = include "./config/$connectionfile.php";
+$tables = include "./config/$seedfile.php";
 
 $db = new App\Database\Database($config);
 $factory = new App\FactoryProcessor\FactoryProcessor();
@@ -13,6 +49,8 @@ $factory = new App\FactoryProcessor\FactoryProcessor();
 $data_tables = [];
 $recnum = 1;
 colorLog('JSMDBSeeder Version 1.01', 'l');
+colorLog("Using seederfile: $seedfile", 'w');
+colorLog("Using connection file: $connectionfile", 'w');
 foreach($tables as $table => $columns) {
     
     $table_info = explode(':', $table);
@@ -53,24 +91,25 @@ function print_record($record)
     echo $line . PHP_EOL;
 }
 
-function colorLog($str, $type = 'i'){
+function colorLog($str, $type = 'n'){
     switch ($type) {
         case 'e': //error
             echo "\033[31m$str \033[0m\n";
-        break;
+            break;
         case 's': //success
             echo "\033[32m$str \033[0m\n";
-        break;
+            break;
         case 'w': //warning
             echo "\033[33m$str \033[0m\n";
-        break;  
+            break;  
         case 'i': //info
             echo "\033[36m$str \033[0m\n";
-        break;  
+            break;  
         case 'l':
-            echo "\033[95m$str \033[0m\n";    
+            echo "\033[95m$str \033[0m\n";  
+            break;  
         default:
-        # code...
-        break;
+            echo $str.PHP_EOL;
+            break;
     }
 }

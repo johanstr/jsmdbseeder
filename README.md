@@ -58,15 +58,31 @@ return [
   
 # Wijzigingen
 
-## Commandline tool
-Er zijn nu twee PHP-scripts te gebruiken, nl:  
-1. index.php  
-    Levert HTML output op
-2. jsmdbseeder  
-    Dit is de commandline versie van de tool. Deze start je in de terminal op de volgende manier:  
+## Commandline tool jsmdbseeder  
+Dit is de commandline versie van de tool. Gebruik de tool als volgt:   
 ```bash
-    php jsmdbseeder
-```
+    # Syntax of the command
+    php jsmdbseeder [-s seederfile [-c configfile]]   
+
+    # use with default config files
+    php jsmdbseeder                             
+
+    # use with default connection file but other seedfile
+    php jsmdbseeder -s mydb                        
+
+    # use with different seedfile and connection file
+    php jsmdbseeder -s mydb -c myconnection        
+
+    # user with different connection file but default seedfile
+    php jsmdbseeder -c myconnection             
+
+    # show help
+    php jsmdbseeder -h                      
+```  
+
+## index.php verwijdert
+Het bestand index.php is uit het project gehaald. Dit bestand had geen nut meer omdat de commandline tool de main tool is geworden.  
+
 
 ## Nieuwe functionaliteit
 Nieuwe functionaliteit toegevoegd:  
