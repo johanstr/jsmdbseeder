@@ -28,9 +28,9 @@ foreach($tables as $table => $columns) {
         $data_tables[$table_name][] = $record;
     }
     
-    colorLog('End of seeding', 's');
     $recnum = 1;
 }
+colorLog('End of seeding', 's');
 
 
 function print_record($record)
