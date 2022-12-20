@@ -10,8 +10,8 @@
         }
     ],
     "require": {
-        "fzaninotto/faker": "^1.9",
-        "nesbot/carbon": "^2.48"
+        "fzaninotto/faker": "^1.9.*",
+        "nesbot/carbon": "^2.*"
     },
     "autoload": {
         "psr-4": {
