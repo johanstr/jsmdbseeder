@@ -11,6 +11,10 @@ Een klein en simpel tooltje voor de vanilla php lessen aan eerste jaars studente
 ```
 
 ### Stap 2
+
+Download [**Composer**](https://getcomposer.org/download/)
+
+### Stap 3
 ```bash
     cd jsmdbseeder 
     composer install
@@ -27,7 +31,7 @@ In de map **config** vind je een bestand ***database.php***. Hierin beschrijf je
         'name' => 'faker:name',             // Maak gebruik van Faker->name
         'email' => 'faker:freeEmail',       // Maak gebruik van Faker->freeEmail
         'password' => 'password:welkom',    // password_hash('...', default)
-        'is_admin' => 'number:0',           // Numerieke waarde
+        'role' => 'number:0',           // Numerieke waarde
         'created_at' => 'date:timestamp',   // Carbon::now()->toDateTimeString()
         'updated_at' => 'date:timestamp'    // Carbon::now()->toDateTimeString()
     ],
@@ -91,4 +95,4 @@ Nieuwe functionaliteit toegevoegd:
     Voorbeeld: 'faker:randomChars:3:uppercase' voor een docenten afkorting
 2. 'faker:gender:length:modifier'  
     Modifier staat voor uppercase of lowercase. Maar wanneer length gelijk aan 3 is werkt de modifier niet en krijg je Male of Female.
-
+    
