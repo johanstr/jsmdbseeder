@@ -5,15 +5,19 @@ Een klein en simpel tooltje voor de vanilla php lessen aan eerste jaars studente
   
 # Hoe te installeren?  
   
-###  Stap 1
+##  Stap 1
 ```bash
     git clone https://github.com/johanstr/jsmdbseeder.git jsmdbseeder
 ```
 
-### Stap 2
+## Stap 2
+Download [Composer](https://getcomposer.org/Composer-Setup.exe).
+
+
+## Stap 3
 ```bash
     cd jsmdbseeder 
-    composer install
+    composer update
 ```
 
 # Hoe te gebruiken?  
@@ -27,7 +31,7 @@ In de map **config** vind je een bestand ***database.php***. Hierin beschrijf je
         'name' => 'faker:name',             // Maak gebruik van Faker->name
         'email' => 'faker:freeEmail',       // Maak gebruik van Faker->freeEmail
         'password' => 'password:welkom',    // password_hash('...', default)
-        'is_admin' => 'number:0',           // Numerieke waarde
+        'role' => 'number:0',           // Numerieke waarde
         'created_at' => 'date:timestamp',   // Carbon::now()->toDateTimeString()
         'updated_at' => 'date:timestamp'    // Carbon::now()->toDateTimeString()
     ],
@@ -50,7 +54,9 @@ Verder vind je daar ook het bestand ***dbconnection.php*** waarin je de connecti
 ```php
 return [
     'host' => '127.0.0.1',
-    'dbname' => 'dbseedertest',
+    // dit is een voorbeeld. Om dit stukje code te laten werken moet je 
+    //dit veranderen naar de naam die jij je database hebt gegeven.
+    'dbname' => 'dbseedertest', 
     'username' => 'root',
     'password' => 'root'
 ];
@@ -61,22 +67,23 @@ return [
 ## Commandline tool jsmdbseeder  
 Dit is de commandline versie van de tool. Gebruik de tool als volgt:   
 ```bash
-    # Syntax of the command
+    # Syntax van het command
     php jsmdbseeder [-s seederfile [-c configfile]]   
 
-    # use with default config files
+    # gebruik de standard configuratie
+    # het is wordt aangeraden om deze te gebruiken
     php jsmdbseeder                             
 
-    # use with default connection file but other seedfile
-    php jsmdbseeder -s mydb                        
+    # gebruik met het standard connectie bestandje, maar een andere seedfile
+    php jsmdbseeder -s mydb    
+    
+    # gebruik met een ander connectie bestand, maar een andere seedfile
+    php jsmdbseeder -c myconnection                       
 
-    # use with different seedfile and connection file
-    php jsmdbseeder -s mydb -c myconnection        
+    # gebruik met een andere seedfile en een andere connectie bestand
+    php jsmdbseeder -s mydb -c myconnection         
 
-    # user with different connection file but default seedfile
-    php jsmdbseeder -c myconnection             
-
-    # show help
+    # print het help profiel in je console
     php jsmdbseeder -h                      
 ```  
 

@@ -1,33 +1,38 @@
 <?php
-/*
- *  STRUCTURE OF THE CONFIG FILE
- *  ----------------------------
- *  [
- *      'table name:amount' => [ 
- *          'column' => 'faker:faker_formatter | text:string | number:number | boolean:true/false | date:timestamp | password:string', 
- *          'column' => 'faker:faker_formatter | text:string | number:number | boolean:true/false | date:timestamp | password:string', 
- *          ... 
- *      ],
- *      'table_name:amount' => [
- *          ...
- *      ]
- *  ]
- * 
- *  COLUMNS
- *  -------
- *  type:value | :method[:length] | :min:max
- * 
- *  Sie below for examples
- */
 
 return [
-    'klassen:2' => [
-        'klasnaam' => 'faker:word',
-        'mentor' => 'faker:name'
+    'users:10' => [                         
+        'name' => 'faker:name',             
+        'email' => 'faker:freeEmail',      
+        'password' => 'password:welkom',    
+        'role' => 'number:0',           
+        'created_at' => 'date:timestamp',  
+        'updated_at' => 'date:timestamp'    
     ],
-    'docenten:4' => [
-        'naam' => 'faker:name',
-        'afkorting' => 'faker:randomChars:3:uppercase',
-        'geslacht' => 'faker:gender:1:uppercase'
-    ]
+    'threads:10' => [
+        'id' => 'rand:10000:10000000',
+        'title' => 'faker:sentence:5',
+        'description' => 'faker:paragraph:5',
+        'user_id' => 'rand:1:10',
+        'created_at' => 'date:timestamp',
+        'updated_at' => 'date:timestamp',
+    ],
+    'topics:10' => [
+        'id' => 'rand:10000:10000000',
+        'title' => 'faker:sentence:5',
+        'content' => 'faker:paragraph:10',
+        'user_id' => 'rand:1:10',
+        'thread_id' => 'rand:50:100',
+        'created_at' => 'date:timestamp',
+        'updated_at' => 'date:timestamp',
+    ],
+    'replies:10' => [
+        'id' => 'rand:10000:10000000',
+        'title' => 'faker:sentence:5',
+        'content' => 'faker:paragraph:10',
+        'user_id' => 'rand:1:10',
+        'reply_id' => 'rand:50:100',
+        'created_at' => 'date:timestamp',
+        'updated_at' => 'date:timestamp',
+    ],
 ];

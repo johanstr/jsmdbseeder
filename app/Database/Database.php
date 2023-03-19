@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Database;
+use PDOException;
 
 class Database
 {
@@ -29,9 +30,9 @@ class Database
         if(is_null($this->connection)) {
             try {
                 $this->connection = new \PDO("mysql:host={$this->dbhost};dbname={$this->dbname}", $this->dbuser, $this->dbpass);
-            } catch(PDOException $e) {
-                echo $e->getMessage();
-                die();
+            } catch(PDOException $error) {
+                echo $error->getMessage();
+                exit();
             }
         }
     }
@@ -85,7 +86,7 @@ class Database
                 $this->statement->execute($values);
             } catch(PDOException $e) {
                 echo $e->getMessage();
-                die();
+                exit();
             }
         }
     }
