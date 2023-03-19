@@ -26,8 +26,7 @@ if(count($argv) > 1) {
                 colorLog('                      Default is dbconnection for dbconnection.php');
                 colorLog('                      Connection files need to be in folder config.');
                 colorLog('');
-                die();
-                break;
+                exit();
 
             case '-s':
                 $seedfile = $arguments[$index + 1];
